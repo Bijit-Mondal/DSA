@@ -21,7 +21,7 @@ class LinkedList{
             current.next = node;
         }
         this.length++;
-    };
+    }
     print(){
      let current = this.head;
         while(current){
@@ -49,6 +49,51 @@ class LinkedList{
             console.log("Data Wasn't Found ");
         }
     }
+    getLen(hot,cold){
+        let len = 1;
+        while(hot.next!=cold){
+            hot = hot.next;
+            ++len;
+        }
+        return len;
+    }
+    getMiddlePosition(hot,cold){
+        if(hot == null){
+            return null;
+        }else{
+            let myIndex = 1;
+            let current = hot;
+            let midPos = (this.getLen(hot,cold)/2)+1;
+            while(myIndex < midPos){
+                current = current.next;
+                myIndex++;
+            }
+            return current;
+        }
+    }
+    BinarySearch(data){
+        let hot = this.head;
+        let cold = null;
+        let found = false;
+        do {
+            let LukeWarm = this.getMiddlePosition(hot,cold);
+            if(LukeWarm == null){
+                console.log("Search Not Possible");
+                return null;
+            }
+            if(LukeWarm.data === data){
+                console.log("Data Was Found");
+                found = true;
+                return found;
+            }else if(LukeWarm.data<data){
+                hot = LukeWarm.next;
+            }else{
+                cold = LukeWarm;
+            }
+        }while(cold == null || cold!=hot);
+        if(!fou
+        )
+    }
 }
 let list = new LinkedList();
 list.createAtEnd(10);
@@ -61,4 +106,6 @@ list.createAtEnd(45);
 list.print();
 
 list.LinearSearch(30);
+
+list.BinarySearch(24);
 
