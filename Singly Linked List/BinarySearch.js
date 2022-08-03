@@ -91,8 +91,9 @@ class LinkedList{
                 cold = LukeWarm;
             }
         }while(cold == null || cold!=hot);
-        if(!fou
-        )
+        if(!found){
+            console.log("Data was Not Found");
+        }
     }
 }
 let list = new LinkedList();
