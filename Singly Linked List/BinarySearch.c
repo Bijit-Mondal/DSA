@@ -40,7 +40,7 @@ void linearSearch(int data){
     node *current = HEAD;
     bool found = false;
     int i = 1;
-    while(current->next!=NULL){
+    while(current){
         if(current->data==data){
             found = true;
             printf("Your element was found on position %d \n",i);
