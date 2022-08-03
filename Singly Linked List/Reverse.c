@@ -33,11 +33,28 @@ void display(){
     }
     printf("\n");
 }
+void Reverse(node *current,node *prevCurrent){
+   if(!head) return; 
+   else if(current->next==NULL){
+       head = current;
+       current->next = prevCurrent;
+       return;
+   }
+   node *nextCurrent = current->next;
+
+   current->next = prevCurrent;
+
+   Reverse(nextCurrent, current);
+}
+
 int main(){
     CreateAndInsertAtEnd(10);
     CreateAndInsertAtEnd(12);
     CreateAndInsertAtEnd(15);
     CreateAndInsertAtEnd(30);
     CreateAndInsertAtEnd(120);
+    display();
+    Reverse(head,NULL);
+    printf("\n----------------After Reverse-------------------------\n");
     display();
 }
