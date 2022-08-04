@@ -59,17 +59,19 @@ void InsertAfter(int data, int find){
     if(head->next == NULL && head->data == find){
         CreateAndInsertAtEnd(data);
     }
-    node *tmp;
-    tmp = (node *)malloc(sizeof(node));
-    node *ttm = head;
-    node *nexttmp = head;
-    while(ttm->next!=NULL && find!=ttm->data){
-        ttm = ttm->next;
-        nexttmp = ttm->next;
+    else{
+        node *tmp;
+        tmp = (node *)malloc(sizeof(node));
+        node *ttm = head;
+        node *nexttmp = head;
+        while(ttm->next!=NULL && find!=ttm->data){
+            ttm = ttm->next;
+            nexttmp = ttm->next;
+        }
+        ttm->next = tmp;
+        tmp->data = data;
+        tmp->next = nexttmp;   
     }
-    ttm->next = tmp;
-    tmp->data = data;
-    tmp->next = nexttmp;   
 }
 void display(){
     if(head == NULL){
