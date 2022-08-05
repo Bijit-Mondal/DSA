@@ -91,10 +91,8 @@ node* binarySearch(int data){
             return LukeWarm;
         }else if(LukeWarm->data < data){
             hot = LukeWarm->next;
-            printf("%d\n",hot->data);
         }else{
             cold = LukeWarm;
-            printf("%d\n",cold->data);
         }
     }while(cold == NULL || cold!=hot);
     return NULL;

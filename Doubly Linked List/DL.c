@@ -87,6 +87,46 @@ void Display(){
     }while(prevCur);
     printf("\n");
 }
+void DeleteAtBeg(){
+    if(HEAD == NULL){
+        return;
+    }
+    node *tmp = HEAD;
+    HEAD = tmp->next;
+    HEAD->prev = NULL;
+    free(tmp);
+}
+void DeleteAtLast(){
+    if(HEAD == NULL){
+        return;
+    }
+    node *current = HEAD;
+    while(current->next){
+        current = current->next;
+    }
+    current->prev->next = NULL;
+    free(current);
+}
+void Delete(int find){
+    if(HEAD == NULL){
+        return;
+    }
+    node *current = HEAD;
+    if(HEAD->data == find){
+        DeleteAtBeg();
+    }else{
+        while(current->next && current->data != find){
+            current = current->next;            
+        }
+        if(current->next == NULL)
+            DeleteAtLast();
+        else{
+            current->prev->next = current->next;
+            current->next->prev = current->prev;
+            free(current);
+        }
+    }
+}
 int main(){
     CreateAndInsertAtEnd(10);
     CreateAndInsertAtEnd(20);
@@ -100,6 +140,18 @@ int main(){
 
     InsertBefore(40,29);
     InsertBefore(1,8);
+    Display();
+
+    DeleteAtBeg();
+    DeleteAtBeg();
+    Display();
+
+    DeleteAtLast();
+    Display();
+    DeleteAtLast();
+    Display();
+    
+    Delete(20);
     Display();
     return 0;
 }
