@@ -72,6 +72,10 @@ void InsertBefore(int data,int find){
     }
 }
 void Display(){
+    if(!HEAD){
+        printf("No linked list is created.\n");
+        return;
+    }
     node *current = HEAD;
     node *prevCur;
     while(current){
@@ -93,7 +97,8 @@ void DeleteAtBeg(){
     }
     node *tmp = HEAD;
     HEAD = tmp->next;
-    HEAD->prev = NULL;
+    if(HEAD)
+        HEAD->prev = NULL;
     free(tmp);
 }
 void DeleteAtLast(){
@@ -104,8 +109,13 @@ void DeleteAtLast(){
     while(current->next){
         current = current->next;
     }
-    current->prev->next = NULL;
+    if(current->prev!=NULL){
+        current->prev->next = NULL;
+    }else{
+        HEAD = NULL;
+    }
     free(current);
+
 }
 void Delete(int find){
     if(HEAD == NULL){
@@ -128,31 +138,61 @@ void Delete(int find){
     }
 }
 int main(){
-    CreateAndInsertAtEnd(10);
-    CreateAndInsertAtEnd(20);
-    CreateAndInsertAtEnd(23);
-    CreateAndInsertAtEnd(24);
-    InsertAtBeginning(8);
-    InsertAfter(34,23);
-    InsertAfter(29,24);
-    InsertAfter(11,8);
-    Display();
-
-    InsertBefore(40,29);
-    InsertBefore(1,8);
-    Display();
-
-    DeleteAtBeg();
-    DeleteAtBeg();
-    Display();
-
-    DeleteAtLast();
-    Display();
-    DeleteAtLast();
-    Display();
-    
-    Delete(20);
-    Display();
+    printf("Enter the first node in the list ");
+    int data,key;
+    scanf("%d",&data);
+    CreateAndInsertAtEnd(data);
+    int flag=1;
+    while(flag){
+        int option;
+            printf("Enter 1 for insert at end\nEnter 2 for insert at beginning\nEnter 3 for insert before some element\nEnter 4 for insert after some element\nEnter 5 for display\nEnter 6 for delete at start\nEnter 7 for delete at end\nEnter 8 for delete the entire list\nEnter -1 for exit\n");
+        scanf("%d",&option);
+        switch(option){
+            case 1:
+                printf("Enter the data you wanna insert ");
+                scanf("%d",&data);
+                CreateAndInsertAtEnd(data);
+                break;
+            case 2:
+                printf("Enter the data you wanna insert ");
+                scanf("%d",&data);
+                InsertAtBeginning(data);
+                break;
+            case 3:
+                printf("Enter the data you wanna insert ");
+                scanf("%d",&data);
+                printf("Enter the key value ");
+                scanf("%d",&key);
+                InsertBefore(data,key);
+                break;
+            case 4:
+                printf("Enter the data you wanna insert ");
+                scanf("%d",&data);
+                printf("Enter the key value ");
+                scanf("%d",&key);
+                InsertAfter(data,key);
+                break;
+            case 5:
+                Display();
+                break;
+            case 6:
+                DeleteAtBeg();
+                break;
+            case 7:
+                DeleteAtLast();
+                break;
+            case 8:
+                printf("Enter the data you wanna delete ");
+                scanf("%d",&data);
+                Delete(data);
+                break;
+            case -1:
+                flag=0;
+                break;
+            default:
+                printf("Take Deep Breath...");
+        }
+    }
     return 0;
 }
 
