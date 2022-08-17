@@ -47,8 +47,12 @@ void InsertAfter(int data,int key){
         while(present->next!=major && present->data!=key){
             present = present->next;
         }
-        NewNode->next = present->next;
-        present->next = NewNode;
+        if(present->data == key){
+            NewNode->next = present->next;
+            present->next = NewNode;
+        }else{
+            printf("Data wasn't found\n");
+        }
     }
 }
 void InsertBefore(int data,int key){
@@ -65,8 +69,12 @@ void InsertBefore(int data,int key){
             past = present;
             present = present->next;
         }
-        past->next = NewNode;
-        NewNode->next = present;
+        if(present->data == key){
+            past->next = NewNode;
+            NewNode->next = present;
+        }else{
+            printf("Item not found\n");
+        }
     }
 }
 void DeleteAtFirst(){
@@ -103,6 +111,25 @@ void DeleteAtLast(){
         OldNode->next = major;
         minor = OldNode;
         free(RIPNode);
+    }
+}
+void Delete(int data){
+    if(major->data == data){
+        DeleteAtFirst();
+    }else if(minor->data == data){
+        DeleteAtLast();
+    }else{
+        CircularLL *present = major;
+        while(present->next!=minor && present->next->data!=data){
+            present = present->next;
+        }
+        if(present->next->data == data){
+            CircularLL *tmp = present->next;
+            present->next = present->next->next;
+            free(tmp);
+        }else{
+            printf("Data not found \n");
+        }
     }
 }
 void Display(){
