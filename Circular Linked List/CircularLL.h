@@ -21,7 +21,7 @@ void CreateLL(int data){
 }
 void InsertAtBeg(int data){
     if(!major){
-        return;
+        CreateLL(data);
     }
     CircularLL *newNode= (CircularLL*)malloc(sizeof(CircularLL));
     newNode->data = data;
@@ -30,16 +30,14 @@ void InsertAtBeg(int data){
     major = newNode;
 }
 void InsertAtLast(int data){
-    if(!major){
-        return;
-    }
     CreateLL(data);
 }
 void InsertAfter(int data,int key){
     CircularLL *NewNode= (CircularLL*)malloc(sizeof(CircularLL));
     NewNode->data = data;
     if(!major){
-        return;
+       printf("Circular Linked List Not Found\nCreating a New Linked List\n");
+       CreateLL(data);
     }else if(minor->data == key){
         InsertAtLast(data);
     }else{
@@ -59,7 +57,8 @@ void InsertBefore(int data,int key){
     CircularLL *NewNode = (CircularLL*)malloc(sizeof(CircularLL));
     NewNode->data = data;
     if(!major){
-        return;
+       printf("Circular Linked List Not Found\nCreating a New Linked List\n");
+       CreateLL(data);
     }else if(major->data == key){
         InsertAtBeg(data);
     }else{
