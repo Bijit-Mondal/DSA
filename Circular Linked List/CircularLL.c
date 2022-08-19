@@ -5,7 +5,7 @@ int main(){
     int flag=1;
     while(flag){
         int option;
-        printf("Enter 1 for insert at end\nEnter 2 for insert at beginning\nEnter 3 for insert before some element\nEnter 4 for insert after some element\nEnter 5 for display\nEnter 6 for delete at start\nEnter 7 for delete at end\nEnter 8 for delete particular data\nEnter -1 for exit\n");
+        printf("Enter 1 for insert at end\nEnter 2 for insert at beginning\nEnter 3 for insert before some element\nEnter 4 for insert after some element\nEnter 5 for display\nEnter 6 for delete at start\nEnter 7 for delete at end\nEnter 8 to delete a specific element\nEnter -1 for exit\n");
         scanf("%d",&option);
         switch(option){
             case 1:
