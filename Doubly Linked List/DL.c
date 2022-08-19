@@ -44,12 +44,14 @@ void InsertAfter(int data,int find){
         while(current->next && find!=current->data){
             current = current->next;
         }
-        tmp->next = current->next;
-        tmp->prev = current;
-        if(current->next){
-            current->next->prev =tmp;
+        if(current->data == data){
+            tmp->next = current->next;
+            tmp->prev = current;
+            if(current->next){
+                current->next->prev =tmp;
+            }
+            current->next = tmp;
         }
-        current->next = tmp;
     }
 }
 void InsertBefore(int data,int find){
@@ -65,10 +67,12 @@ void InsertBefore(int data,int find){
         while(current->next!=NULL && find!=current->data){
             current = current->next;
         }
-        tmp->next = current;
-        current->prev->next = tmp;
-        tmp->prev = current->prev;
-        current->prev = tmp;
+        if(current->data == find){
+            tmp->next = current;
+            current->prev->next = tmp;
+            tmp->prev = current->prev;
+            current->prev = tmp;
+        }
     }
 }
 void Display(){
