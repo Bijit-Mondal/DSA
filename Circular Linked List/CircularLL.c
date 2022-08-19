@@ -1,10 +1,7 @@
 #include<stdio.h>
 #include "CircularLL.h"
 int main(){
-    printf("Enter the first node in the list ");
     int data,key;
-    scanf("%d",&data);
-    CreateLL(data);
     int flag=1;
     while(flag){
         int option;
