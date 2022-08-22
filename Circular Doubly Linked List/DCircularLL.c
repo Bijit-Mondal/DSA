@@ -41,11 +41,11 @@ int main(){
              case 7:
                  DeleteAtLast();
                  break;
-            // case 8:
-            //     printf("Enter the data you wanna delete ");
-            //     scanf("%d",&data);
-            //     Delete(data);
-            //     break;
+            case 8:
+                printf("Enter the data you wanna delete ");
+                scanf("%d",&data);
+                Delete(data);
+                break;
             case -1:
                 flag=0;
                 break;

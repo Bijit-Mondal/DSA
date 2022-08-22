@@ -119,6 +119,29 @@ void DeleteAtBeg(){
         head = tail->next;
     }
 }
+void Delete(int data){
+    if(!head){
+        printf("\nHave you lost your mind\n");
+        return;
+    }
+    else if(head->data == data){
+        DeleteAtBeg();
+    }else if(tail->data == data){
+        DeleteAtLast();
+    }else{
+        DCircularLL *current = head;
+        while(current!=tail&&current->data!=data){
+            current = current->next;
+        }
+        if(current->data==data){
+            current->prev->next = current->next;
+            current->next->prev = current->prev;
+            free(current);
+        }else{
+            printf("\nData is not found \n");
+        }
+    }
+}
 void Display(){
     if(!head){
         printf("No Linked List Find, Can't Display\n");
