@@ -35,9 +35,9 @@ int main(){
             case 5:
                 Display();
                 break;
-            // case 6:
-            //     DeleteAtFirst();
-            //     break;
+             case 6:
+                 DeleteAtBeg();
+                 break;
              case 7:
                  DeleteAtLast();
                  break;

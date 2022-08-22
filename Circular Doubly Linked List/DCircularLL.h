@@ -105,6 +105,20 @@ void DeleteAtLast(){
         tail = head->prev;
     }
 }
+void DeleteAtBeg(){
+    if(!head){
+        printf("No Linked List Find, Can't Delete Any Element\n");
+    }else if(head->next == head){
+        free(head);
+        head = NULL;
+        tail = NULL;
+    }else{
+        tail->next = head->next;
+        head->next->prev = tail;
+        free(head);
+        head = tail->next;
+    }
+}
 void Display(){
     if(!head){
         printf("No Linked List Find, Can't Display\n");
