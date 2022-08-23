@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<unistd.h>
 typedef struct DCircularLL{
     int data;
     struct DCircularLL *next;
@@ -24,6 +25,7 @@ void CreateLL(int data){
         head->prev = newNode;
         tail = newNode;
     }
+    sleep(20);
 }
 void InsertAtBeg(int data){
     DCircularLL *newNode = (DCircularLL *) malloc(sizeof(DCircularLL));
