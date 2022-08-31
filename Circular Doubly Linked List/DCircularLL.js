@@ -65,6 +65,20 @@ class DCircularLL{
         }while(current!=this.head);
         console.log("-----------------------");
     }
+    DeleteAtLast(){
+        let RIPnode = this.tail;
+        this.tail = tail.prev;
+        this.tail.next = this.head;
+        this.head.prev = this.tail;
+        delete RIPnode;
+    }
+    DeleteAtBeg(){
+        let RIPnode = this.head;
+        this.head = head.next;
+        this.head.prev = this.tail;
+        this.tail.next = this.head;
+        delete RIPnode;
+    }
 }
 let flag = true;
 let list = new DCircularLL();
@@ -72,8 +86,10 @@ while(flag){
     console.log("1 for InsertAtLast");
     console.log("2 for InsertAtBeginning");
     console.log("3 for InsertAt Any Position");
-    console.log("-1 for Exit")
     console.log("4 for Display");
+    console.log("5 for DeleteAtLast");
+    console.log("6 for DeleteAtBeg");
+    console.log("-1 for Exit");
     let option = prompt("Enter ");
     option = Number(option);
     switch(option){
@@ -92,6 +108,12 @@ while(flag){
             break;
         case 4:
             list.Display();
+            break;
+        case 5:
+            list.DeleteAtLast();
+            break;
+        case 6:
+            list.DeleteAtBeg();
             break;
         case -1:
             flag = false;
