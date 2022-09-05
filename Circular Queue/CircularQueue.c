@@ -17,11 +17,11 @@ void enqueue(int data){
 void dequeue(){
     if(front==-1&&rear==-1){
         printf("Queue is empty");
-    }else if(((rear+1)%MAX_QUEUE_SIZE)==front){
-        printf("dequeue\n");
-        front = (front+1)%MAX_QUEUE_SIZE;
+    }else if(front == rear){
+        front = -1;
+        rear = -1;
     }
-    else if(front!=(rear+1)%MAX_QUEUE_SIZE){
+    else{
         printf("dequeue\n");
         front = (front+1)%MAX_QUEUE_SIZE;
     }
