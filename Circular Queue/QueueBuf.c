@@ -13,9 +13,9 @@ queue *rear = NULL;
 int size = 0;
 int ran(){
     int i = rand()%150;
-    int k = i*5;
+    int k = (i*rand())%(rand%30);
     if(i<(i*2)%k && (i*2)<=100 && i>0){
-        return i*2+4;
+        return i*2+rand();
     }else if(i>90){
         return (i*2)%k;
     }else{
