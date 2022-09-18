@@ -23,7 +23,7 @@ int ran(){
     }
 }
 void enqueue(int data){
-    sleep(1);
+    //sleep(1);
     if(front == NULL && rear == NULL){
         queue *newQ = (queue*)malloc(sizeof(queue));
         newQ->data = data;
@@ -45,7 +45,7 @@ void enqueue(int data){
     }
 }
 void dequeue(){
-    sleep(1);
+    //sleep(1);
     if((!front)&& (!rear)){
         printf("Queue is empty\n");
     }else if(front == rear){
