@@ -76,7 +76,7 @@ void dequeueAtRear(){
         }
         present->next = NULL;
         rear = present;
-        free(rear);
+        free(RIPqueue);
         --size;
     }
 }
