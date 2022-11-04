@@ -27,6 +27,45 @@ void inorder(node *nd){
     printf("%d ",nd->data);
     inorder(nd->right);
 }
+int getRightMin(node *root){
+    node *tmp = root;
+    while(tmp->left != NULL){
+        tmp = tmp->left;
+    }
+    return tmp->data;
+}
+node* delete(node *root,int key){
+    if(!root){
+        return NULL;
+    }
+    if(root->data < key){
+        root->right = delete(root->right,key);
+    }else if(root->data > key){
+        root->left = delete(root->left,key);
+    }else{
+        //when the element is found
+        //case 1: leaf node deletion
+        if(root->left==NULL && root->right==NULL){
+            return NULL;
+        }
+        //case 2: right child exists
+        if(root->left == NULL){
+            node *tmp = root->right;
+            free(root);
+            return tmp;
+        }else if(root->right == NULL){//case 3: left child exists
+            node *tmp = root->left;
+            free(root);
+            return tmp;
+        }else{
+            int rightMin = getRightMin(root->right);
+            root->data = rightMin;
+            root->right = delete(root->right,rightMin);
+        }
+
+    }
+    return root;
+}
 node* search(node *root,int key){
     if(root == NULL){
         return NULL;
@@ -48,7 +87,6 @@ int main(){
         root = addNode(root,data);
         scanf("%d",&data);
     }
-    //inorder(root);
     printf("Enter a element to search for\n");
     int key;
     scanf("%d",&key);
@@ -57,6 +95,12 @@ int main(){
     }else{
         printf("The item was not found\n");
     }
+    printf("Inorder : ");
+    inorder(root);
+    printf("\nEnter a element to delete\n");
+    scanf("%d",&key);
+    delete(root,key);
+    inorder(root);
     return 0;
 }
 
