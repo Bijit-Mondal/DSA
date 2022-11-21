@@ -27,6 +27,22 @@ void inorder(node *nd){
     printf("%d ",nd->data);
     inorder(nd->right);
 }
+void preorder(node *nd){
+    if(nd == NULL){
+        return;
+    }
+    printf("%d ",nd->data);
+    inorder(nd->left);
+    inorder(nd->right);
+}
+void postorder(node *nd){
+    if(nd == NULL){
+        return;
+    }
+    inorder(nd->left);
+    inorder(nd->right);
+    printf("%d ",nd->data);
+}
 int getRightMin(node *root){
     node *tmp = root;
     while(tmp->left != NULL){
@@ -97,6 +113,10 @@ int main(){
     }
     printf("Inorder : ");
     inorder(root);
+    printf("Preorder : ");
+    preorder(root);
+    printf("Postorder : ");
+    postorder(root);
     printf("\nEnter a element to delete\n");
     scanf("%d",&key);
     delete(root,key);
