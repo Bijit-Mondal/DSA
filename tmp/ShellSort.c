@@ -17,14 +17,14 @@ int main(){
 		// 	}
 		// }
 		for(int i=gap;i<n;i++){
-        key = arr[i];
-        j = (i-gap);
-        while(j>=0 && key>arr[j]){
-            arr[j+gap] = arr[j];
-            j=j-gap;
-        }
-        arr[j+gap] = key;
-    }	
+			key = arr[i];
+			j = (i-gap);
+			while(j>=0 && key>arr[j]){
+				arr[j+gap] = arr[j];
+				j=j-gap;
+			}
+        	arr[j+gap] = key;
+   		}	
 	}
 	for(int i=0;i<n;i++){
         printf("%d\t",arr[i]);
