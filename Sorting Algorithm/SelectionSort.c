@@ -1,15 +1,21 @@
 #include<stdio.h>
 int main(){
-    int arr[10]={12,67,21,56,90,13,54,76,98,21};
-    int min = arr[0];
-    int temp;
+    int arr[10]={45,67,21,56,90,11,54,76,98,12};
+    int temp,tmp_val;
+    int min;
     for(int i=0;i<10;i++){
-        for(int j=i;j<10;j++){
+        min = arr[i];
+        temp = -1;
+        for(int j=i+1;j<10;j++){
             if(min>arr[j]){
-                temp = arr[j];
-                arr[j] = min;
-                min = temp;
+                temp=j;
+                min = arr[j];
             }
+        }
+        if(temp!=-1){
+            tmp_val = arr[i];
+            arr[i] = arr[temp];
+            arr[temp] = tmp_val;
         }
     }
     for(int j=0;j<10;j++){
