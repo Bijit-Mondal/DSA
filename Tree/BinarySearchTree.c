@@ -98,7 +98,7 @@ int main(){
     node *root = NULL;
     printf("Enter values to insert, enter -1 to exit\n");
     int data;
-    scanf("%d",&data);
+     scanf("%d",&data);
     while(data!=-1){
         root = addNode(root,data);
         scanf("%d",&data);

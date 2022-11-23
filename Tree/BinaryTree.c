@@ -6,30 +6,33 @@ struct node {
   struct node* left;
   struct node* right;
 };
-
-// Inorder traversal
-void inorderTraversal(struct node* root) {
-  if (root == NULL) return;
-  inorderTraversal(root->left);
-  printf("%d ->", root->item);
-  inorderTraversal(root->right);
+int height(struct node* node){
+    if(node == NULL){
+        return 0;
+    }else{
+        int lheight = height(node->left);
+        int rheight = height(node->right);
+        //use the larger one
+        return rheight>lheight?(rheight+1):(lheight+1);
+    }
 }
-
-// Preorder traversal
-void preorderTraversal(struct node* root) {
-  if (root == NULL) return;
-  printf("%d ->", root->item);
-  preorderTraversal(root->left);
-  preorderTraversal(root->right);
+void printCurrentLevel(struct node* root,int level){
+    if(!root){
+        return;
+    }
+    if(level == 1){
+        printf("%d ",root->item);
+    }else if(level > 1){
+        printCurrentLevel(root->left,level-1);
+        printCurrentLevel(root->right,level-1);
+    }
 }
-
-
-// Postorder traversal
-void postorderTraversal(struct node* root) {
-  if (root == NULL) return;
-  postorderTraversal(root->left);
-  postorderTraversal(root->right);
-  printf("%d ->", root->item);
+void printLevelOrder(struct node* root) {
+    int h = height(root);
+    int i;
+    for(i=1;i<=h;i++){
+        printCurrentLevel(root,i);
+    }
 }
 
 // Create a new Node
@@ -59,14 +62,5 @@ int main() {
   insertLeft(root, 2);
   insertRight(root, 3);
   insertLeft(root->left, 4);
-
-  printf("Inorder traversal \n");
-  inorderTraversal(root);
-
-  printf("\nPreorder traversal \n");
-  preorderTraversal(root);
-
-  printf("\nPostorder traversal \n");
-  postorderTraversal(root);
+  printLevelOrder(root); 
 }
-
