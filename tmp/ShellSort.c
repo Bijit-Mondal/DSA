@@ -10,12 +10,6 @@ int main(){
 	}
 	int j,key;
 	for(int gap=n/2;gap>0;gap=gap/2){
-		// for(int i=gap;i<size;i++){
-		// 	key = arr[i];
-		// 	for(j=i;j<=gap && key<arr[j-gap];j-=gap){
-				
-		// 	}
-		// }
 		for(int i=gap;i<n;i++){
 			key = arr[i];
 			j = (i-gap);
